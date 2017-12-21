@@ -7,7 +7,7 @@ package com.mycompany.sistemarestaurante.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List; 
 
 /**
  *
@@ -17,12 +17,12 @@ public class Pedido {
     private Atendente atendente;
     private Cliente cliente;
     private List<Produto> produtos;
-    private LocalDate horapedido;
+    private String horapedido;
 
-    public Pedido(Atendente atendente, Cliente cliente, LocalDate horapedido) {
+    public Pedido(Atendente atendente, Cliente cliente, List<Produto> produtos, String horapedido) {
         this.atendente = atendente;
         this.cliente = cliente;
-        this.produtos = new ArrayList<>();
+        this.produtos = produtos;
         this.horapedido = horapedido;
     }
 
@@ -38,9 +38,31 @@ public class Pedido {
         return produtos;
     }
 
-    public LocalDate getHorapedido() {
-        return horapedido;
+    public void adiciona(Produto produto) {
+        this.produtos.add(produto);
     }
     
+    public double desconto( double valor){
+        if(valor >=100){
+        double desconto;
+        desconto = valor * 0.75;
+        return desconto;
+        }
+        return valor;
+    }
+    
+    public double comissao(double valor){
+        double comissao;
+        comissao = valor + valor * 0.01;
+        return comissao;
+    }
+    
+    /*public double fecharPedido(List<Produto> produtos){
+    double conta = 0;
+    for(int i=0; i < produtos.size();i++){
+     
+    }
+    return conta;   
+    }*/
     
 }

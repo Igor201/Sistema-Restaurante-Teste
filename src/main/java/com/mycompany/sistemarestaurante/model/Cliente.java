@@ -14,6 +14,12 @@ public class Cliente {
     private String email;
 
     public Cliente(String nome, String email) {
+        if(email == null || email.isEmpty()) {
+            throw new IllegalArgumentException("e-mail do Cliente inválido");
+        }
+        if(nome == null || nome.isEmpty()) {
+            throw new IllegalArgumentException("nome do Cliente inválido");
+        }
         this.nome = nome;
         this.email = email;
     }
@@ -24,6 +30,14 @@ public class Cliente {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
     

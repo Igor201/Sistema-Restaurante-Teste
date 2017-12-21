@@ -11,38 +11,32 @@ package com.mycompany.sistemarestaurante.model;
  */
 public class Atendente {
     private String nome;
-    private int numpedidos;
-    private double comisao;
+    private String email;
 
-    public Atendente(String nome, int numpedidos, double comisao) {
+    public Atendente(String nome, String email) {
+        if(email == null || email.isEmpty()) {
+            throw new IllegalArgumentException("e-mail do Atendente inválido");
+        }
+        if(nome == null || nome.isEmpty()) {
+            throw new IllegalArgumentException("nome do Atendente inválido");
+        }
         this.nome = nome;
-        this.numpedidos = numpedidos;
-        this.comisao = comisao;
+        this.email = email;
     }
 
     public String getNome() {
         return nome;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public int getNumpedidos() {
-        return numpedidos;
+    public void setEmail(String email) {
+        this.email = email;
     }
-
-    public void setNumpedidos(int numpedidos) {
-        this.numpedidos = numpedidos;
-    }
-
-    public double getComisao() {
-        return comisao;
-    }
-
-    public void setComisao(double comisao) {
-        this.comisao = comisao;
-    }
-    
-    
 }
