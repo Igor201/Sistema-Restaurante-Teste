@@ -15,19 +15,23 @@ import org.junit.Test;
  * @author Igor Sousa PC
  */
 public class TestePedido {
-    private CenarioPedido cenariop;
+    private Pedido pedido; 
     
     @Before
     public void inicializa() {
-        cenariop = new CenarioPedido();
+        pedido = new Pedido();
     }
     
-    @Ignore
+    @Test
+    public void comissaoPedido() {
+        double valorPedido = 100.00;
+        Assert.assertEquals(101.00,pedido.comissao(valorPedido), 0.0001);
+    }
+    
     @Test
     public void descontoPedido() {
-        cenariop.fazerPedido().getProdutos();
-        
-        /*Assert.assertEquals(85.00, cenariop.fazerPedido().desconto(), 0.0001);*/
+        double valorPedido = 100.00;
+        Assert.assertEquals(85.00,pedido.desconto(valorPedido), 0.0001);
     }
     
 }

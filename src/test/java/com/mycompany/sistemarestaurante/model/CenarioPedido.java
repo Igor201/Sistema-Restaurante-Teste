@@ -18,16 +18,16 @@ public class CenarioPedido {
     private Pedido pedido;
     private List<Produto> produtos;
     
-    public Pedido fazerPedido(){
+    public Pedido cenarioPedido(){
      joao = new Cliente("joao", "joao@gmail.com");
      joao = new Cliente("maria", "maria@gmail.com");
      
-     produtos.add(new Produto("Biscoito", 100));
-     produtos.add(new Produto("Coca", 10));
-     produtos.add(new Produto("Agua", 2));
-     produtos.add(new Produto("Suco", 20));
+     produtos.add(new Produto("Biscoito", 50));
+     produtos.add(new Produto("Coca", 25));
+     produtos.add(new Produto("Agua", 15));
+     produtos.add(new Produto("Suco", 10));
      
-     pedido = new Pedido(maria, joao, produtos, "14:00");
+     pedido = new Pedido(maria, joao, produtos);
      
      
      return pedido;
@@ -36,7 +36,7 @@ public class CenarioPedido {
      joao = new Cliente("joao", "joao@gmail.com");
      joao = new Cliente("maria", "maria@gmail.com");
        
-     pedido = new Pedido(maria, joao, null, "19:00");
+     pedido = new Pedido(maria, joao, null);
      
      return pedido;
     } 

@@ -17,13 +17,14 @@ public class Pedido {
     private Atendente atendente;
     private Cliente cliente;
     private List<Produto> produtos;
-    private String horapedido;
+    
+    public Pedido() {
+    }
 
-    public Pedido(Atendente atendente, Cliente cliente, List<Produto> produtos, String horapedido) {
+    public Pedido(Atendente atendente, Cliente cliente, List<Produto> produtos) {
         this.atendente = atendente;
         this.cliente = cliente;
         this.produtos = produtos;
-        this.horapedido = horapedido;
     }
 
     public Atendente getAtendente() {
@@ -45,7 +46,7 @@ public class Pedido {
     public double desconto( double valor){
         if(valor >=100){
         double desconto;
-        desconto = valor * 0.75;
+        desconto = valor - valor * 0.15;
         return desconto;
         }
         return valor;
@@ -57,12 +58,12 @@ public class Pedido {
         return comissao;
     }
     
-    /*public double fecharPedido(List<Produto> produtos){
+    public double fecharPedido(List<Produto> prod){
     double conta = 0;
     for(int i=0; i < produtos.size();i++){
-     
+    conta += produtos.get(i).getValor();
     }
     return conta;   
-    }*/
+    }
     
 }
