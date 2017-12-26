@@ -13,6 +13,10 @@ public class Atendente {
     private String nome;
     private String email;
 
+    public Atendente(){
+        
+    }
+    
     public Atendente(String nome, String email) {
         if(email == null || email.isEmpty()) {
             throw new IllegalArgumentException("e-mail do Atendente inválido");

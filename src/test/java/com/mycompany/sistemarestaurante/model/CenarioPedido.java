@@ -18,17 +18,14 @@ public class CenarioPedido {
     private Pedido pedido;
     private List<Produto> produtos;
     
-    public Pedido cenarioPedido(){
+    public Pedido CenarioPedido(){
      joao = new Cliente("joao", "joao@gmail.com");
      joao = new Cliente("maria", "maria@gmail.com");
      
-     produtos.add(new Produto("Biscoito", 50));
-     produtos.add(new Produto("Coca", 25));
-     produtos.add(new Produto("Agua", 15));
-     produtos.add(new Produto("Suco", 10));
-     
-     pedido = new Pedido(maria, joao, produtos);
-     
+     pedido.adiciona(new Produto("Biscoito", 50));
+     pedido.adiciona(new Produto("Coca", 25));
+     pedido.adiciona(new Produto("Agua", 15));
+     pedido.adiciona(new Produto("Suco", 10));
      
      return pedido;
     }
@@ -36,8 +33,41 @@ public class CenarioPedido {
      joao = new Cliente("joao", "joao@gmail.com");
      joao = new Cliente("maria", "maria@gmail.com");
        
-     pedido = new Pedido(maria, joao, null);
+     pedido = new Pedido(maria, joao, null, 10.00);
      
      return pedido;
-    } 
+    }
+
+    public Cliente getJoao() {
+        return joao;
+    }
+
+    public void setJoao(Cliente joao) {
+        this.joao = joao;
+    }
+
+    public Atendente getMaria() {
+        return maria;
+    }
+
+    public void setMaria(Atendente maria) {
+        this.maria = maria;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+   
 }

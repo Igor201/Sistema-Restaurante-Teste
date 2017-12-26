@@ -5,6 +5,9 @@
  */
 package com.mycompany.sistemarestaurante.model;
 
+
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -23,14 +26,33 @@ public class TestePedido {
     }
     
     @Test
+    public void pedidoValido() {
+        Atendente atendente = (new Atendente("Clara", "clara@gmail.com"));
+        Cliente cliente = (new Cliente("zora", "zora@gmail.com"));
+        List<Produto> produtos = new ArrayList<>();
+        produtos.add(new Produto("Refrigerante", 8.00));
+        produtos.add(new Produto("Refri", 5.00));
+        Pedido ped = new Pedido(atendente, cliente, produtos, 13.00);
+       Assert.assertTrue(ped.pedidoValido());
+    }
+    
+    @Test
+    public void pedidoInvalido() {
+        
+       Assert.assertTrue(pedido.pedidoInvalido());
+    }
+    
+    @Test
     public void comissaoPedido() {
-        double valorPedido = 100.00;
+        pedido.setValor(100.00);
+        double valorPedido = pedido.getValor();
         Assert.assertEquals(101.00,pedido.comissao(valorPedido), 0.0001);
     }
     
     @Test
     public void descontoPedido() {
-        double valorPedido = 100.00;
+        pedido.setValor(100.00);
+        double valorPedido = pedido.getValor();
         Assert.assertEquals(85.00,pedido.desconto(valorPedido), 0.0001);
     }
     

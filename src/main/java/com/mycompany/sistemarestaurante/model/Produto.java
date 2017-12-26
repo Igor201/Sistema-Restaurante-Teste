@@ -25,4 +25,26 @@ public class Produto {
     public double getValor() {
         return valor;
     }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+    
+    public boolean produtoValido(){
+        if(nome == null || valor <= 0){
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean produtoInvalido(){
+        if(nome == null || valor <= 0){
+            return true;
+        }
+        return false;
+    } 
 }

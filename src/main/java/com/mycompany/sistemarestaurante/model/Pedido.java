@@ -17,14 +17,16 @@ public class Pedido {
     private Atendente atendente;
     private Cliente cliente;
     private List<Produto> produtos;
+    private double valor;
     
     public Pedido() {
     }
 
-    public Pedido(Atendente atendente, Cliente cliente, List<Produto> produtos) {
+    public Pedido(Atendente atendente, Cliente cliente, List<Produto> produtos, double valor) {
         this.atendente = atendente;
         this.cliente = cliente;
-        this.produtos = produtos;
+        this.produtos = new ArrayList<>();
+        this.valor = valor;
     }
 
     public Atendente getAtendente() {
@@ -42,6 +44,48 @@ public class Pedido {
     public void adiciona(Produto produto) {
         this.produtos.add(produto);
     }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public void setAtendente(Atendente atendente) {
+        this.atendente = atendente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+    
+    
+    
+    public boolean pedidoValido(){
+        if(atendente == null || cliente == null){
+            return false;
+        }
+        if(produtos == null || valor <= 0){
+            return false;
+        }
+        return true;
+    } 
+    
+     public boolean pedidoInvalido(){
+        if(atendente == null || cliente == null){
+            return true;
+        }
+        if(produtos == null || valor <= 0){
+            return true;
+        }
+        return false;
+    } 
     
     public double desconto( double valor){
         if(valor >=100){
@@ -56,14 +100,6 @@ public class Pedido {
         double comissao;
         comissao = valor + valor * 0.01;
         return comissao;
-    }
-    
-    public double fecharPedido(List<Produto> prod){
-    double conta = 0;
-    for(int i=0; i < produtos.size();i++){
-    conta += produtos.get(i).getValor();
-    }
-    return conta;   
     }
     
 }
