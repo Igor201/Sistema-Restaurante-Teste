@@ -18,15 +18,17 @@ public class Pedido {
     private Cliente cliente;
     private List<Produto> produtos;
     private double valor;
+    private boolean pagAvista;
     
     public Pedido() {
     }
 
-    public Pedido(Atendente atendente, Cliente cliente, List<Produto> produtos, double valor) {
+    public Pedido(Atendente atendente, Cliente cliente, List<Produto> produtos, double valor, boolean pagAvista) {
         this.atendente = atendente;
         this.cliente = cliente;
         this.produtos = new ArrayList<>();
         this.valor = valor;
+        this.pagAvista = pagAvista;
     }
 
     public Atendente getAtendente() {
@@ -64,15 +66,26 @@ public class Pedido {
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
+
+    public boolean isPagAvista() {
+        return pagAvista;
+    }
+
+    public void setPagAvista(boolean pagAvista) {
+        this.pagAvista = pagAvista;
+    }
     
     
     
     public boolean pedidoValido(){
-        if(atendente == null || cliente == null){
+        if(atendente == null || cliente == null ){
             return false;
         }
-        if(produtos == null || valor <= 0){
+        if(produtos == null || valor <= 0 ){
             return false;
+        }
+        if(pagAvista || pagAvista == false){
+            return true;
         }
         return true;
     } 
@@ -84,6 +97,9 @@ public class Pedido {
         if(produtos == null || valor <= 0){
             return true;
         }
+        if(pagAvista || pagAvista == false){
+            return false;
+        } 
         return false;
     } 
     
@@ -100,6 +116,12 @@ public class Pedido {
         double comissao;
         comissao = valor + valor * 0.01;
         return comissao;
+    }
+    
+    public void pagamentoAvista(){
+        if(pagAvista == false){
+            valor = valor + valor * 0.05;
+        }
     }
     
 }

@@ -32,7 +32,7 @@ public class TestePedido {
         List<Produto> produtos = new ArrayList<>();
         produtos.add(new Produto("Refrigerante", 8.00));
         produtos.add(new Produto("Refri", 5.00));
-        Pedido ped = new Pedido(atendente, cliente, produtos, 13.00);
+        Pedido ped = new Pedido(atendente, cliente, produtos, 13.00, true);
        Assert.assertTrue(ped.pedidoValido());
     }
     
@@ -56,4 +56,20 @@ public class TestePedido {
         Assert.assertEquals(85.00,pedido.desconto(valorPedido), 0.0001);
     }
     
+    
+    @Test
+    public void formaPagamentoAvista(){
+        pedido.setValor(100.00);
+        pedido.setPagAvista(true);
+        pedido.pagamentoAvista();
+        Assert.assertEquals(100.00,pedido.getValor(), 0.0001);
+    }
+    
+     @Test
+    public void formaPagamentoNaoAvista(){
+        pedido.setValor(100.00);
+        pedido.setPagAvista(false);
+        pedido.pagamentoAvista();
+        Assert.assertEquals(105.00,pedido.getValor(), 0.0001);
+    }
 }
